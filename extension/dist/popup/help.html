@@ -1,128 +1,219 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Need Help?</title>
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
-    />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
     <style>
-      body {
-        background-color: rgb(72, 49, 49);
-        color: whitesmoke;
-        font-family: sans-serif;
-        text-align: center;
-      }
-      h1 {
-        font-size: 2rem;
-      }
-      p {
-        font-size: max(1.5vw, 1rem);
-      }
-      a {
-        color: rgb(135, 135, 232);
-      }
-      .author {
-        position: absolute;
-        bottom: 15px;
-        border: 0;
-        left: 50%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        transform: translateX(-50%);
-        text-decoration: none;
-        display: inline;
-        color: whitesmoke;
-      }
-      .youtube {
-        padding: 2rem;
-        display: inline-block;
-      }
+        :root {
+            --primary-bg: #1a1a1a;
+            --accent-color: #6366f1;
+            --text-color: #f3f4f6;
+            --card-bg: #2a2a2a;
+            --hover-color: #818cf8;
+        }
 
-      .advertisement {
-        color: rgb(239, 239, 239);
-        position: fixed;
-        bottom: 20px;
-        right: 20px;
-        padding: 10px;
-        border: 1px solid #ccc;
-        border-radius: 5px;
-        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-      }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            transition: all 0.3s ease;
+        }
 
-      .advertisement p {
-        font-size: min(1.3vw, 15px);
-      }
+        body {
+            background-color: var(--primary-bg);
+            color: var(--text-color);
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            padding: 2rem;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
 
-      .advertisement a {
-        color: rgb(239, 239, 239);
-      }
+        .container {
+            max-width: 800px;
+            width: 100%;
+            margin: 0 auto;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin: 1rem 0;
+            background: linear-gradient(45deg, var(--accent-color), var(--hover-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        img {
+            margin: 2rem 0;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+
+        .card {
+            background-color: var(--card-bg);
+            padding: 2rem;
+            border-radius: 12px;
+            margin: 2rem 0;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+
+        p {
+            font-size: 1.1rem;
+            margin: 1rem 0;
+        }
+
+        a {
+            color: var(--accent-color);
+            text-decoration: none;
+            padding: 0.2rem 0.5rem;
+            border-radius: 4px;
+        }
+
+        a:hover {
+            color: var(--hover-color);
+            background-color: rgba(99, 102, 241, 0.1);
+        }
+
+        .fixes {
+            text-align: left;
+            padding: 1rem 2rem;
+        }
+
+        .fixes p {
+            display: flex;
+            align-items: center;
+            margin: 0.5rem 0;
+        }
+
+        .fixes p::before {
+            content: "•";
+            color: var(--accent-color);
+            margin-right: 0.5rem;
+        }
+
+        .warning {
+            color: #ef4444;
+            font-size: 0.9rem;
+            margin: 1rem 0;
+        }
+
+        .author {
+            margin-top: auto;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 2rem;
+            margin-top: 1rem;
+        }
+
+        .social-links a {
+            padding: 0.5rem;
+            border-radius: 50%;
+            background-color: var(--card-bg);
+        }
+
+        .social-links a:hover {
+            transform: translateY(-2px);
+        }
+
+        .advertisement {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background-color: var(--card-bg);
+            padding: 1.5rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            max-width: 300px;
+            animation: slideIn 0.5s ease-out;
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 1rem;
+            }
+            
+            .advertisement {
+                position: static;
+                margin: 2rem auto;
+                width: 90%;
+            }
+        }
     </style>
-  </head>
-  <body>
-    <h1>Redirect Blocker</h1>
-    <img src="../../img/Icon128.png" width="64" height="64" alt="" />
-    <p>
-      If you face are facing issue(s), please report them on the
-      <a
-        target="_blank"
-        href="https://github.com/Tyson3101/Redirect-Blocker/issues"
-        >Github page</a
-      >
-      with helpful information.
-    </p>
-    <p>
-      If you have a feature request / suggestion, please report them on the
-      <a
-        target="_blank"
-        href="https://github.com/Tyson3101/Redirect-Blocker/issues"
-        >Github page</a
-      >
-    </p>
-    <br />
-    <div>
-      <h1 style="font-size: 1.9em">Possible Fixes for Issues:</h1>
-      <p>- Restart Chrome and re-open/close tabs</p>
-      <p>- Refresh/Re-toggle of tabs/extension may be needed</p>
-      <p>- Reinstallation of extension may be needed</p>
-    </div>
-    <span style="color: red; font-size: 1em"
-      >Before creating an issue on github, try the above.</span
-    >
-    <div class="author">
-      <h3>
-        <a
-          href="https://youtube.com/@Tyson3101"
-          style="text-decoration: none; color: whitesmoke"
-          >By Tyson3101</a
-        >
-        <hr />
-      </h3>
-      <a
-        aria-label="Github Page"
-        target="_blank"
-        href="https://github.com/Tyson3101/Redirect-Blocker"
-        class="github-corner"
-      >
-        <i style="font-size: 6rem; color: white" class="fa fa-github"></i
-      ></a>
-      <a class="youtube" href="https://youtube.com/@Tyson3101">
-        <i class="fa fa-youtube" style="font-size: 6rem; color: red"></i>
-      </a>
+</head>
+<body>
+    <div class="container">
+        <h1>Redirect Blocker</h1>
+        <img src="/api/placeholder/64/64" width="64" height="64" alt="Redirect Blocker Icon" />
+        
+        <div class="card">
+            <p>
+                If you face any issues, please report them on the
+                <a target="_blank" href="https://github.com/Tyson3101/Redirect-Blocker/issues">Github page</a>
+                with helpful information.
+            </p>
+            <p>
+                If you have a feature request / suggestion, please report them on the
+                <a target="_blank" href="https://github.com/Tyson3101/Redirect-Blocker/issues">Github page</a>
+            </p>
+        </div>
+
+        <div class="card">
+            <h1>Possible Fixes for Issues:</h1>
+            <div class="fixes">
+                <p>Restart Chrome and re-open/close tabs</p>
+                <p>Refresh/Re-toggle of tabs/extension may be needed</p>
+                <p>Reinstallation of extension may be needed</p>
+            </div>
+            <p class="warning">Before creating an issue on github, try the above.</p>
+        </div>
+
+        <div class="author">
+            <h3>
+                <a href="https://youtube.com/@Tyson3101">By Tyson3101</a>
+            </h3>
+            <div class="social-links">
+                <a aria-label="Github Page" target="_blank" href="https://github.com/Tyson3101/Redirect-Blocker">
+                    <i class="fa fa-github" style="font-size: 3rem"></i>
+                </a>
+                <a class="youtube" href="https://youtube.com/@Tyson3101">
+                    <i class="fa fa-youtube" style="font-size: 3rem; color: #ef4444"></i>
+                </a>
+            </div>
+        </div>
     </div>
 
     <div class="advertisement">
-      <p>
-        <span style="font-weight: bold">My other extensions:</span> <br /><br />
-        <a
-          href="https://chrome.google.com/webstore/detail/auto-youtube-shorts-scroller/ckbnikemebopgknkpgjlkbffpkkhblbe"
-          >Auto Youtube Shorts Scroller</a
-        >
-      </p>
+        <p>
+            <span style="font-weight: bold">My other extensions:</span>
+            <br /><br />
+            <a href="https://chrome.google.com/webstore/detail/auto-youtube-shorts-scroller/ckbnikemebopgknkpgjlkbffpkkhblbe">
+                Auto Youtube Shorts Scroller
+            </a>
+        </p>
     </div>
-  </body>
+</body>
 </html>
